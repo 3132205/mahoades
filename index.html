@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>MÃ HÓA DES</title>
+  <style>
+    body {
+      background-image: url('https://png.pngtree.com/background/20230525/original/pngtree-desk-in-the-dark-office-space-picture-image_2729859.jpg'); /* thay bằng ảnh nền của bạn nếu cần */
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+    .password-container {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .file-input {
+      margin: 10px 0;
+      color: #000;
+    }
+    .button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #c2185b;
+    }
+    .or {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .bottom-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .bottom-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .encrypt {
+      background-color: #3b5998; /* Facebook màu */
+    }
+    .decrypt {
+      background-color: #00acee; /* Twitter màu */
+    }
+    .file-name {
+      font-style: italic;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>MÃ HÓA DES</h2>
+    
+    <input type="text" placeholder="Tên người dùng">
+
+    <div class="password-container">
+      <input type="password" id="passwordInput" placeholder="Nhập mật khẩu">
+      <span class="toggle-password" onclick="togglePassword()">👁️</span>
+    </div>
+
+    <label><input type="checkbox"> Ghi nhớ tôi</label>
+
+    <!-- Choose file -->
+    <div class="file-input">
+      <input type="file" id="fileInput" onchange="showFileName(event)">
+      <p id="fileName" class="file-name"></p>
+    </div>
+
+    
+
+    <div class="or">— hoặc —</div>
+
+    <!-- Nút mã hóa & giải mã -->
+    <div class="bottom-buttons">
+      <button class="encrypt" onclick="downloadFile()">🔐 Mã hóa</button>
+      <button class="decrypt" onclick="downloadFile()">🔓 Giải mã</button>
+    </div>
+  </div>
+
+  <script>
+    // Hiện/ẩn mật khẩu
+    function togglePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    }
+
+    // Hiển thị tên file
+    function showFileName(event) {
+      const fileName = event.target.files[0]?.name || '';
+      document.getElementById('fileName').textContent = 'Đã chọn: ' + fileName;
+    }
+
+    // Tải file (giả lập)
+    function downloadFile() {
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files.length) {
+        alert("Vui lòng chọn một file trước.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const url = URL.createObjectURL(file);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

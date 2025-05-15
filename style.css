@@ -1,0 +1,82 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #1e2a38 0%, #e74c3c 100%);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 800px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.left {
+  flex: 1;
+  background: #e74c3c;
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.left h2 {
+  font-size: 26px;
+}
+.left p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.right {
+  flex: 1;
+  background: #1e2a38;
+  color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right label {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.right input[type="file"],
+.right input[type="text"] {
+  background: #2c3e50;
+  border: 1px solid #5d6d7e;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  color: white;
+}
+.right input:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+.right .buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.right button {
+  background: #e74c3c;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.right button:hover {
+  background: #c0392b;
+}
+#downloadSection {
+  margin-top: 20px;
+}
